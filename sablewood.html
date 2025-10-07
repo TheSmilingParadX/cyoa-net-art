@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>say hello [USER] to your [ADVENTURE]</title>
+    <link rel="stylesheet" href="css/sablewood.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Welcome to the Sablewood</h1>
+            <p class="description">An ancient, expansive forest rumored to be older than the Forgotten Gods. Click on each node to learn more about this dangerous and wondrous place.</p>
+        </div>
+
+        <div class="web-organizer">
+            <!-- Central Node -->
+            <div class="node central-node" data-detail="sablewood">
+                <div class="node-content">
+                    <span class="node-title">The Sablewood</span>
+                </div>
+            </div>
+
+            <!-- Distinction Nodes -->
+            <div class="node distinction-node node-1" data-detail="verdance">
+                <div class="node-content">
+                    <span class="node-title">Endless Verdance</span>
+                </div>
+            </div>
+
+            <div class="node distinction-node node-2" data-detail="fauna">
+                <div class="node-content">
+                    <span class="node-title">Hybrid Fauna</span>
+                </div>
+            </div>
+
+            <div class="node distinction-node node-3" data-detail="spires">
+                <div class="node-content">
+                    <span class="node-title">The Spires</span>
+                </div>
+            </div>
+
+            <div class="node distinction-node node-4" data-detail="pathways">
+                <div class="node-content">
+                    <span class="node-title">Well-Worn Pathways</span>
+                </div>
+            </div>
+
+            <!-- Landmark Nodes -->
+            <div class="node landmark-node node-5" data-detail="titans-steps">
+                <div class="node-content">
+                    <span class="node-title">Titan's Steps</span>
+                </div>
+            </div>
+
+            <div class="node landmark-node node-6" data-detail="lucent-river">
+                <div class="node-content">
+                    <span class="node-title">Lucent River</span>
+                </div>
+            </div>
+
+            <div class="node landmark-node node-7" data-detail="open-vale">
+                <div class="node-content">
+                    <span class="node-title">Open Vale</span>
+                </div>
+            </div>
+
+            <!-- Settlement Nodes -->
+            <div class="node settlement-node node-8" data-detail="hush">
+                <div class="node-content">
+                    <span class="node-title">Hush</span>
+                </div>
+            </div>
+
+            <div class="node settlement-node node-9" data-detail="refuge">
+                <div class="node-content">
+                    <span class="node-title">The Refuge</span>
+                </div>
+            </div>
+
+            <div class="node settlement-node node-10" data-detail="roots-hollow">
+                <div class="node-content">
+                    <span class="node-title">Root's Hollow</span>
+                </div>
+            </div>
+
+            <!-- Faction Nodes -->
+            <div class="node faction-node node-11" data-detail="thistlefolk">
+                <div class="node-content">
+                    <span class="node-title">Thistlefolk</span>
+                </div>
+            </div>
+
+            <div class="node faction-node node-12" data-detail="sable-sinecure">
+                <div class="node-content">
+                    <span class="node-title">Sable Sinecure</span>
+                </div>
+            </div>
+
+            <!-- Connection Lines (SVG) -->
+            <svg class="connections" xmlns="http://www.w3.org/2000/svg">
+                <!-- Distinction connections -->
+                <line class="connection-line" x1="50%" y1="50%" x2="30%" y2="20%"></line>
+                <line class="connection-line" x1="50%" y1="50%" x2="70%" y2="20%"></line>
+                <line class="connection-line" x1="50%" y1="50%" x2="85%" y2="50%"></line>
+                <line class="connection-line" x1="50%" y1="50%" x2="70%" y2="80%"></line>
+                <!-- Landmark connections -->
+                <line class="connection-line" x1="50%" y1="50%" x2="30%" y2="80%"></line>
+                <line class="connection-line" x1="50%" y1="50%" x2="15%" y2="50%"></line>
+                <line class="connection-line" x1="50%" y1="50%" x2="50%" y2="15%"></line>
+                <!-- Settlement connections -->
+                <line class="connection-line" x1="50%" y1="50%" x2="15%" y2="25%"></line>
+                <line class="connection-line" x1="50%" y1="50%" x2="85%" y2="25%"></line>
+                <line class="connection-line" x1="50%" y1="50%" x2="50%" y2="85%"></line>
+                <!-- Faction connections -->
+                <line class="connection-line" x1="50%" y1="50%" x2="20%" y2="65%"></line>
+                <line class="connection-line" x1="50%" y1="50%" x2="80%" y2="65%"></line>
+            </svg>
+        </div>
+
+        <div class="continue-container">
+            <button class="continue-btn" id="continueBtn">Continue to Character Selection</button>
+        </div>
+    </div>
+
+    <!-- Detail Popup -->
+    <div id="detailPopup" class="popup">
+        <div class="popup-content detail-popup">
+            <span class="close" id="closeDetail">&times;</span>
+            <h2 id="detailTitle"></h2>
+            <p id="detailDescription"></p>
+            <div id="detailFinds">
+                <h3>You might find:</h3>
+                <ul id="findsList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/sablewood.js"></script>
+</body>
+</html>
