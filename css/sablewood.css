@@ -208,8 +208,8 @@ body {
     padding: 18px 40px;
     font-size: 1.2rem;
     font-family: 'Georgia', 'Times New Roman', serif;
-    background: var(--red);
-    color: white;
+    background: var(--deep-purple);
+    color: var(--gold);
     border: 3px solid var(--gold);
     border-radius: 8px;
     cursor: pointer;
@@ -219,7 +219,8 @@ body {
 }
 
 .continue-btn:hover {
-    background: var(--orange);
+    background: var(--gold);
+    color: var(--deep-purple);
     transform: translateY(-2px);
     box-shadow: 0 5px 20px rgba(253, 196, 100, 0.5);
 }

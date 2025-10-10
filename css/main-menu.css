@@ -32,9 +32,9 @@ body {
 }
 
 .main-menu {
-    background: rgba(80, 27, 85, 0.9);
+    background: var(--deep-purple);
     border: 3px solid var(--gold);
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 50px 40px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     text-align: center;
@@ -66,7 +66,7 @@ body {
     font-size: 1.1rem;
     font-family: 'Georgia', 'Times New Roman', serif;
     border: 2px solid;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: bold;
@@ -74,13 +74,14 @@ body {
 }
 
 .menu-btn.primary {
-    background: var(--red);
-    color: white;
+    background: transparent;
+    color: var(--gold);
     border-color: var(--gold);
 }
 
 .menu-btn.primary:hover {
-    background: var(--orange);
+    background: var(--gold);
+    color: var(--deep-purple);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(253, 196, 100, 0.4);
 }
