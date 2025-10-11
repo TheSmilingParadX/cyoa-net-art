@@ -1,4 +1,36 @@
-// Game state
+// Determine which scene comes next
+function determineNextScene(outcome, currentScene) {
+    const sceneTransitions = {
+        'scene1': 'scene2',
+        'scene2': 'scene3',
+        'scene3': 'scene4',
+        'scene4_negotiate': 'scene5_negotiate',
+        'scene4_combat': 'scene5_combat',
+        'scene5_negotiate': 'scene6_hush',
+        'scene5_combat': 'scene6_hush',
+        'scene6_hush': 'scene7_end',
+        'end_tavern': 'complete',
+        'end_immediate': 'complete',
+        'end_explore': 'complete'
+    };
+
+    if (currentScene === 'scene4') {
+        if (outcome === 'negotiation_attempt') {
+            return 'scene5_negotiate';
+        } else if (outcome === 'general_aggressive') {
+            return 'scene5_combat';
+        } else if (outcome === 'illusion_escape') {
+            return 'scene5_negotiate';
+        }
+    }
+
+    if (sceneTransitions[outcome] === 'complete') {
+        window.location.href = 'thank-you.html';
+        return currentScene;
+    }
+
+    return sceneTransitions[currentScene] || 'scene7_end';
+}// Game state
 const gameState = {
     currentScene: 'scene1',
     hope: 2,
@@ -38,12 +70,12 @@ const scenes = {
     },
     scene2: {
         title: "The Overturned Merchant Cart",
-        narrative: "As your carriage rounds a sharp corner, your driver pulls hard on the reins. A merchant's cart lies overturned across the path, its cargo scattered like abandoned treasures. A dead merchant—or what remains of one—lies beside the wreckage. And standing over the corpse, feeding on the remains, is a creature unlike any you've seen: a strixwolf. It has the body of a great wolf, the face and wings of an enormous owl, and eyes that seem far too intelligent. When it notices your approach, it straightens, studying you with predatory interest. Two smaller shapes move behind it—pups, you realize. A mother protecting her young.",
+        narrative: "As your carriage rounds a sharp corner, your driver pulls hard on the reins. A merchant's cart lies overturned across the path, its cargo scattered like abandoned treasures. A dead merchant, or what remains of one, lies beside the wreckage. And standing over the corpse, feeding on the remains, is a creature unlike any you've seen: a strixwolf. It has the body of a great wolf, the face and wings of an enormous owl, and eyes that seem far too intelligent. When it notices your approach, it straightens, studying you with predatory interest. Two smaller shapes move behind it: pups, you realize. A mother protecting her young.",
         diceRoll: true,
         diceDescription: "Roll the dice to see if Marlowe can sense the strixwolf's intentions with her Arcane Sense.",
         choices: [
             {
-                text: "I can sense its emotions. That's a mother with young. We should back away slowly and show respect.",
+                text: "I can sense its emotions. It's protective, that's a mother with young. We should back away slowly and show respect.",
                 label: "Sorcerer - Arcane Sense",
                 marlowe: true,
                 outcome: "arcane_respect"
@@ -89,7 +121,7 @@ const scenes = {
     },
     scene4: {
         title: "We're Being Watched",
-        narrative: "As you examine the wreckage, one of your companions whispers an urgent warning. You're being watched. There's movement in the brambles on either side of the path. It's too organized, too deliberate to be natural. The shimmer of polished stone catches your eye. Armor? But made of stone? A voice calls out from the brush: The package. Hand it over, and you'll live. Through the foliage, you catch glimpses of armed figures moving into position. Thistlefolk, you realize. And you're surrounded.",
+        narrative: "As you examine the wreckage, one of your companions whispers an urgent warning. You're being watched. There's movement in the brambles on either side of the path, too organized, too deliberate to be natural. The shimmer of polished stone catches your eye. Armor? But made of stone? A voice calls out from the brush: The package. Hand it over, and you'll live. Through the foliage, you catch glimpses of armed figures moving into position. Thistlefolk, you realize. And you're surrounded.",
         diceRoll: true,
         diceDescription: "Roll the dice to determine the outcome of your next action.",
         choices: [
@@ -115,7 +147,7 @@ const scenes = {
     },
     scene5_negotiate: {
         title: "Negotiation with the Thistlefolk",
-        narrative: "A figure emerges from the brambles. They're smaller than you expected, barely reaching your chest, but their bearing is confident. Their armor—stone scales fitted together seamlessly—catches the dappled light. Behind them, a dozen more Thistlefolk emerge from hiding, weapons drawn but not raised. Their leader speaks: I am Yikyik. We know you carry something valuable. The Whitefire Arcanist pays well for certain acquisitions. Hand over the crate and you walk free.",
+        narrative: "A figure emerges from the brambles. They're smaller than you expected, barely reaching your chest, but their bearing is confident. Their armor catches the dappled light. Behind them, a dozen more Thistlefolk emerge from hiding, weapons drawn but not raised. Their leader speaks: I am Yikyik. We know you carry something valuable. The Whitefire Arcanist pays well for certain acquisitions. Hand over the crate and you walk free.",
         diceRoll: false,
         choices: [
             {
@@ -169,12 +201,6 @@ const scenes = {
         narrative: "After the chaos of the Sablewood, Hush is a welcome sight. The village emerges from the forest, nestled into a clearing with four dwarven stone pillars marking its boundaries. Buildings of wood and earth blend seamlessly with the forest around them. Inhabitants move peacefully through the streets, and you can smell fresh bread and something sweet cooking somewhere nearby. A sense of protection settles over you as you cross into the village.",
         diceRoll: false,
         choices: [
-            {
-                text: "This settlement shows remarkable signs of cooperation.",
-                label: "Loreborne - Scholarly",
-                marlowe: true,
-                outcome: "hush_scholarly"
-            },
             {
                 text: "Greetings. We come on behalf of King Emeris with a delivery for the Whitefire Arcanist.",
                 label: "General - Formal",
@@ -269,6 +295,14 @@ function handleChoice(outcome, currentScene) {
     
     gameState.choices.push(outcome);
     gameState.currentScene = currentScene;
+
+    // Check if this leads to the completion page
+    if (currentScene === 'scene7_end' && (outcome === 'end_tavern' || outcome === 'end_immediate' || outcome === 'end_explore')) {
+        setTimeout(() => {
+            window.location.href = 'thank-you.html';
+        }, 500);
+        return;
+    }
 
     const nextScene = determineNextScene(outcome, currentScene);
     
