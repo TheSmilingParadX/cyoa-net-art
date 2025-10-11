@@ -1,0 +1,576 @@
+/* Color Palette Variables */
+:root {
+    --gold: #FDC464;
+    --orange: #F28A48;
+    --red: #C84E3D;
+    --deep-purple: #501B55;
+    --purple: #5536A9;
+    --light-purple: #634DB4;
+    --dagger-navy: #201b51;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--dagger-navy);
+    min-height: 100vh;
+    color: #f5f5f5;
+}
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr 350px;
+    gap: 30px;
+    align-items: start;
+}
+
+.story-container {
+    background: rgba(80, 27, 85, 0.7);
+    border: 3px solid var(--gold);
+    border-radius: 15px;
+    padding: 50px;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.narrative-section {
+    flex-grow: 1;
+}
+
+.scene-title {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px;
+    border-bottom: 3px solid var(--orange);
+    padding-bottom: 15px;
+}
+
+.narrative-text {
+    font-size: 1.1rem;
+    line-height: 2;
+    color: #f5f5f5;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+/* Dialogue Choices */
+.dialogue-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dialogue-choice {
+    background: rgba(32, 27, 81, 0.8);
+    border: 2px solid var(--light-purple);
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.dialogue-choice:hover {
+    background: rgba(32, 27, 81, 1);
+    border-color: var(--orange);
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(242, 138, 72, 0.3);
+}
+
+.dialogue-choice.marlowe-specific {
+    border-color: var(--light-purple);
+    background: var(--dagger-navy);
+}
+
+.dialogue-choice.marlowe-specific:hover {
+    border-color: var(--orange);
+    box-shadow: 0 5px 20px rgba(253, 196, 100, 0.4);
+}
+
+.choice-text {
+    font-size: 1rem;
+    color: #f5f5f5;
+    line-height: 1.5;
+}
+
+.choice-label {
+    font-size: 0.85rem;
+    color: var(--orange);
+    margin-top: 8px;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.marlowe-specific .choice-label {
+    color: var(--orange);
+}
+
+.marlowe-badge {
+    position: absolute;
+    bottom: 17px;
+    right: 15px;
+    background: var(--gold);
+    color: var(--deep-purple);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Story Stats */
+.story-stats {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding-top: 20px;
+    border-top: 2px solid var(--light-purple);
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2rem;
+}
+
+.stat-label {
+    color: var(--orange);
+    font-weight: bold;
+}
+
+.stat-value {
+    background: rgba(32, 27, 81, 0.8);
+    color: var(--gold);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 2px solid var(--light-purple);
+    font-weight: bold;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.narrative-section,
+.dialogue-choice {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Character Sheet Panel */
+.character-sheet-panel {
+    background: rgba(80, 27, 85, 0.7);
+    border: 3px solid var(--gold);
+    border-radius: 15px;
+    padding: 25px;
+    max-height: 600px;
+    position: sticky;
+    top: 40px;
+    overflow-y: auto;
+}
+
+.sheet-header {
+    text-align: center;
+    border-bottom: 2px solid var(--orange);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.sheet-header h2 {
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 5px;
+}
+
+.sheet-subtitle {
+    color: var(--orange);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.sheet-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.sheet-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sheet-label {
+    font-size: 0.85rem;
+    color: var(--orange);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.sheet-value {
+    font-size: 0.95rem;
+    color: #f5f5f5;
+}
+
+.sheet-section {
+    margin-bottom: 20px;
+}
+
+.sheet-section h3 {
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--light-purple);
+    padding-bottom: 5px;
+}
+
+.sheet-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sheet-section li {
+    font-size: 0.9rem;
+    color: #f5f5f5;
+    padding: 4px 0;
+    padding-left: 12px;
+    position: relative;
+}
+
+.sheet-section li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--light-purple);
+}
+
+/* Scrollbar for character sheet */
+.character-sheet-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.character-sheet-panel::-webkit-scrollbar-track {
+    background: rgba(32, 27, 81, 0.5);
+    border-radius: 3px;
+}
+
+.character-sheet-panel::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 3px;
+}
+
+.character-sheet-panel::-webkit-scrollbar-thumb:hover {
+    background: var(--orange);
+}
+
+/* Dice Roll Section */
+.dice-roll-section {
+    background: rgba(32, 27, 81, 0.6);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.dice-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 25px;
+}
+
+.dice {
+    width: 120px;
+    height: 120px;
+    border: 3px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.dice.hope-die {
+    border-color: var(--gold);
+    background: rgba(253, 196, 100, 0.1);
+}
+
+.dice.fear-die {
+    border-color: var(--red);
+    background: rgba(200, 78, 61, 0.1);
+}
+
+.dice.rolling {
+    animation: rollDice 0.5s ease;
+}
+
+.die-face {
+    font-size: 3rem;
+    font-weight: bold;
+    min-width: 60px;
+    text-align: center;
+}
+
+.dice.hope-die .die-face {
+    color: var(--gold);
+}
+
+.dice.fear-die .die-face {
+    color: var(--red);
+}
+
+.die-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.dice.hope-die .die-label {
+    color: var(--gold);
+}
+
+.dice.fear-die .die-label {
+    color: var(--red);
+}
+
+.roll-button {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--red);
+    color: white;
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.roll-button:hover {
+    background: var(--orange);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(253, 196, 100, 0.4);
+}
+
+.roll-button:disabled {
+    background: #444;
+    border-color: #666;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.roll-outcome {
+    background: rgba(80, 27, 85, 0.6);
+    border: 2px solid var(--light-purple);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.outcome-success {
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+.outcome-failure {
+    color: var(--red);
+    border-color: var(--red);
+}
+
+.outcome-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+@keyframes rollDice {
+    0% { transform: rotateX(0) rotateY(0) scale(1); }
+    50% { transform: rotateX(360deg) rotateY(360deg) scale(1.1); }
+    100% { transform: rotateX(0) rotateY(0) scale(1); }
+}
+
+/* Dialogue History */
+.dialogue-history {
+    background: rgba(80, 27, 85, 0.7);
+    border: 3px solid var(--light-purple);
+    border-radius: 15px;
+    padding: 20px;
+    max-height: 600px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 40px;
+}
+
+.history-header {
+    border-bottom: 2px solid var(--orange);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.history-header h2 {
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 1px;
+}
+
+.history-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.history-message {
+    padding: 12px;
+    border-radius: 10px;
+    line-height: 1.4;
+    font-size: 0.9rem;
+    animation: slideInHistory 0.3s ease;
+}
+
+.history-message.marlowe {
+    background: rgba(253, 196, 100, 0.15);
+    border-left: 3px solid var(--gold);
+    color: var(--gold);
+}
+
+.history-message.narrator {
+    background: rgba(99, 77, 180, 0.2);
+    border-left: 3px solid var(--light-purple);
+    color: #f5f5f5;
+}
+
+.history-message.action {
+    background: rgba(242, 138, 72, 0.15);
+    border-left: 3px solid var(--orange);
+    color: var(--orange);
+    font-style: italic;
+}
+
+.message-speaker {
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    opacity: 0.9;
+}
+
+/* Scrollbar for history */
+.history-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-messages::-webkit-scrollbar-track {
+    background: rgba(32, 27, 81, 0.5);
+    border-radius: 3px;
+}
+
+.history-messages::-webkit-scrollbar-thumb {
+    background: var(--light-purple);
+    border-radius: 3px;
+}
+
+.history-messages::-webkit-scrollbar-thumb:hover {
+    background: var(--orange);
+}
+
+@keyframes slideInHistory {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .dialogue-history {
+        max-width: 100%;
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .story-container {
+        padding: 30px 20px;
+        min-height: auto;
+    }
+
+    .scene-title {
+        font-size: 1.8rem;
+    }
+
+    .narrative-text {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .dialogue-choice {
+        padding: 15px;
+    }
+
+    .choice-text {
+        font-size: 0.95rem;
+    }
+
+    .story-stats {
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .stat {
+        font-size: 1rem;
+    }
+
+    .dialogue-history {
+        max-height: 400px;
+    }
+}

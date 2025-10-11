@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>say hello [USER] to your [ADVENTURE]</title>
+    <link rel="stylesheet" href="css/char-select.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Choose Your Messenger</h1>
+            <p class="subtitle">Select a party member to begin your adventure.</p>
+            <p class="subtitle">Disclaimer: Odd bug where character icons not appear.</p>
+            <p class="subtitle">To fix it, simply click on the options, and they should show up properly.</p>
+        </div>
+
+        <div class="character-grid">
+            <!-- Barnacle -->
+            <div class="character-card" data-character="barnacle">
+                <div class="character-icon"></div>
+                <h3 class="character-name">Barnacle</h3>
+                <p class="character-description"><i>There is no danger he will not get into, and no situation he cannot get out of. He fears water and will not swim.</i></p>
+            </div>
+
+            <!-- Garrick Reed -->
+            <div class="character-card" data-character="garrick">
+                <div class="character-icon"></div>
+                <h3 class="character-name">Garrick Reed</h3>
+                <p class="character-description"><i>A defector from a distant military force, he approaches most conflict with a "kill 'em with kindness" attitude.</i></p>
+            </div>
+
+            <!-- Marlowe Fairwind -->
+            <div class="character-card" data-character="marlowe">
+                <div class="character-icon"></div>
+                <h3 class="character-name">Marlowe Fairwind</h3>
+                <p class="character-description"><i>She is the personal mage to King Emeris, and is responsible for bringing this group together. She appears calm, until she isn't.</i></p>
+                <span class="featured-badge">Featured</span>
+            </div>
+
+            <!-- Khari Nix -->
+            <div class="character-card" data-character="khari">
+                <div class="character-icon"></div>
+                <h3 class="character-name">Khari Nix</h3>
+                <p class="character-description"><i>Loyal to the end, with a dry sense of humor, she will suffer no fools. She was practically born with an axe in her hand.</i></p>
+            </div>
+
+            <!-- Varian Soto -->
+            <div class="character-card" data-character="varian">
+                <div class="character-icon"></div>
+                <h3 class="character-name">Varian Soto</h3>
+                <p class="character-description"><i>They take a "shoot first, ask questions later" approach. Any problem that can't be solved with a bow, isn't a problem yet.</i></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Character Detail Popup -->
+    <div id="characterPopup" class="popup">
+        <div class="popup-content character-popup">
+            <span class="close" id="closeCharacter">&times;</span>
+
+            <div class="popup-header">
+                <div class="popup-full-image">
+                </div>
+                <div class="popup-info-section">
+                    <div class="popup-icon"></div>
+                    <div class="popup-info">
+                        <h2 id="popupName"></h2>
+                        <p id="popupClass"></p>
+                        <p id="popupSubclass"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup-details">
+                <div class="detail-section">
+                    <h3>Heritage</h3>
+                    <p id="popupHeritage"></p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Domains</h3>
+                    <p id="popupDomains"></p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Starting Loadout</h3>
+                    <p id="popupLoadout"></p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Abilities</h3>
+                    <p id="popupAbilities"></p>
+                </div>
+            </div>
+
+            <div class="popup-actions">
+                <button class="action-btn confirm" id="confirmBtn">Start [ADVENTURE]</button>
+                <button class="action-btn disabled" id="disabledBtn">Out of Order</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/char-select.js"></script>
+</body>
+</html>

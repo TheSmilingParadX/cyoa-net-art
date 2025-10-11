@@ -178,4 +178,5 @@ document.addEventListener('keydown', (e) => {
 // Continue button
 document.getElementById('continueBtn').addEventListener('click', () => {
     console.log('Continuing to character selection...');
+    window.location.href = 'char-select.html';
 });

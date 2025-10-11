@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>say hello [USER] to your [ADVENTURE]</title>
+    <link rel="stylesheet" href="css/act-1.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="character-sheet-panel">
+                <div class="sheet-header">
+                    <h2>Marlowe Fairwind</h2>
+                    <p class="sheet-subtitle">Loreborne Elf Sorcerer</p>
+                </div>
+                <div class="sheet-stats">
+                    <div class="sheet-stat">
+                        <span class="sheet-label">Domains</span>
+                        <span class="sheet-value">Arcana & Midnight</span>
+                    </div>
+                    <div class="sheet-stat">
+                        <span class="sheet-label">Spellcast</span>
+                        <span class="sheet-value">Instinct</span>
+                    </div>
+                    <div class="sheet-stat">
+                        <span class="sheet-label">Weapon</span>
+                        <span class="sheet-value">Dualstaff</span>
+                    </div>
+                </div>
+                <div class="sheet-section">
+                    <h3>Experiences</h3>
+                    <ul>
+                        <li>Royal Mage +2</li>
+                        <li>Not On My Watch +2</li>
+                    </ul>
+                </div>
+                <div class="sheet-section">
+                    <h3>Key Abilities</h3>
+                    <ul>
+                        <li>Arcane Sense</li>
+                        <li>Minor Illusion</li>
+                        <li>Manipulate Magic</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="story-container">
+                <div class="narrative-section">
+                    <h1 id="sceneTitle" class="scene-title"></h1>
+                    <p id="narrativeText" class="narrative-text"></p>
+                </div>
+
+                <div id="diceRollSection" class="dice-roll-section" style="display: none;">
+                    <div class="dice-container">
+                        <div class="dice hope-die">
+                            <div class="die-face" id="hopeDieResult">-</div>
+                            <div class="die-label">Hope</div>
+                        </div>
+                        <div class="dice fear-die">
+                            <div class="die-face" id="fearDieResult">-</div>
+                            <div class="die-label">Fear</div>
+                        </div>
+                    </div>
+                    <button class="roll-button" id="rollButton">Roll the Dice</button>
+                    <div id="rollOutcome" class="roll-outcome" style="display: none;"></div>
+                </div>
+
+                <div class="dialogue-choices" id="dialogueChoices"></div>
+
+                <div class="story-stats">
+                    <div class="stat">
+                        <span class="stat-label">Hope:</span>
+                        <span class="stat-value" id="hopeValue">2</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Fear:</span>
+                        <span class="stat-value" id="fearValue">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-history">
+                <div class="history-header">
+                    <h2>Dialogue History</h2>
+                </div>
+                <div class="history-messages" id="historyMessages"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/act-1.js"></script>
+</body>
+</html>
